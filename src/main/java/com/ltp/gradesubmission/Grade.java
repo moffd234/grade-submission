@@ -7,6 +7,12 @@ public class Grade {
 
     public Grade(){}
 
+    public Grade(String name, String subject, String score) {
+        this.name = name;
+        this.subject = subject;
+        this.score = score;
+    }
+
     public String getName() {
         return name;
     }

@@ -8,7 +8,8 @@ public class GradesController {
 
     @GetMapping("/grades")
     public String getGrades(Model model){
-
+        Grade grade = new Grade("Harry", "Potions", "C-");
+        model.addAttribute("grade", grade);
         return "grades"; // Directs the grades.html
     }
 }
