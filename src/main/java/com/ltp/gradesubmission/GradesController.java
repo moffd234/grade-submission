@@ -21,4 +21,9 @@ public class GradesController {
         model.addAttribute("grades", studentGrades);
         return "grades"; // Directs the grades.html
     }
+    @GetMapping("/")
+    public String gradeForm(Model model){
+        model.addAttribute("grade", new Grade());
+        return "form";
+    }
 }
