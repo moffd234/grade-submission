@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -21,10 +20,10 @@ public class GradesController {
     }
     @GetMapping("/")
     // @RequestParam notates that the parameter can only come from a GET request
-    // required = false allows us to go to home page without having a id sent with the request
+    // required = false allows us to go to home page without having an id sent with the request
     public String gradeForm(Model model, @RequestParam(required = false) String id){
         Grade grade;
-        if(getGradeIndex(id) == -1){
+        if(getGradeIndex(id) == Constants.NOT_FOUND){
             grade = new Grade();
         }
         else{
@@ -37,7 +36,7 @@ public class GradesController {
     @PostMapping("/handleSubmit")
     public String handleSubmit(Grade grade){
         int index = getGradeIndex(grade.getId());
-        if(index == -1){
+        if(index == Constants.NOT_FOUND){
             studentGrades.add(grade);  // Adds the grade that was submitted in the POST request
         }
         else{
