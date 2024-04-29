@@ -21,14 +21,14 @@ public class GradesController {
     }
     @GetMapping("/")
     // @RequestParam notates that the parameter can only come from a GET request
-    // required = false allows us to go to home page without having a name sent with the request
-    public String gradeForm(Model model, @RequestParam(required = false) String name){
+    // required = false allows us to go to home page without having a id sent with the request
+    public String gradeForm(Model model, @RequestParam(required = false) String id){
         Grade grade;
-        if(getGradeIndex(name) == -1){
+        if(getGradeIndex(id) == -1){
             grade = new Grade();
         }
         else{
-            grade = studentGrades.get(getGradeIndex(name));
+            grade = studentGrades.get(getGradeIndex(id));
         }
         model.addAttribute("grade", grade);
         return "form";
@@ -36,7 +36,7 @@ public class GradesController {
 
     @PostMapping("/handleSubmit")
     public String handleSubmit(Grade grade){
-        int index = getGradeIndex(grade.getName());
+        int index = getGradeIndex(grade.getId());
         if(index == -1){
             studentGrades.add(grade);  // Adds the grade that was submitted in the POST request
         }
@@ -46,9 +46,9 @@ public class GradesController {
         return "redirect:/grades"; // Redirects to a GET request at /grades
     }
 
-    public Integer getGradeIndex(String name){
+    public Integer getGradeIndex(String id){
         for(int i = 0; i < studentGrades.size(); i++){
-            if(studentGrades.get(i).getName().equals(name)){
+            if(studentGrades.get(i).getId().equals(id)){
                 return i;
             }
         }
