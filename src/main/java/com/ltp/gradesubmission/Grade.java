@@ -4,6 +4,7 @@ public class Grade {
     private String name;
     private String subject;
     private String score;
+    private Integer id;
 
     public Grade(){}
 
@@ -35,5 +36,13 @@ public class Grade {
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
