@@ -52,6 +52,6 @@ public class GradesController {
                 return i;
             }
         }
-        return -1;
+        return Constants.NOT_FOUND;
     }
 }
